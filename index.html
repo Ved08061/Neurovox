@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeuroVox AI Custom Mask Design</title>
+    <meta name="description" content="Parametric AI custom mask design and 6-point facial analysis platform for personalized NeuroVox bio-acoustic and silent-speech wearables." />
+    <meta property="og:title" content="NeuroVox AI Custom Mask Design" />
+    <meta property="og:description" content="Parametric AI custom mask design and 6-point facial analysis platform for personalized NeuroVox bio-acoustic and silent-speech wearables." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function () {
+        // Intercept console.error to filter out benign TensorFlow Lite WASM runtime INFO/diagnostic logs
+        var origError = console.error;
+        console.error = function () {
+          var first = arguments[0];
+          if (
+            typeof first === 'string' &&
+            (first.indexOf('TensorFlow Lite') !== -1 ||
+             first.indexOf('XNNPACK') !== -1 ||
+             first.indexOf('INFO:') === 0 ||
+             first.indexOf('INFO: Created') !== -1)
+          ) {
+            if (console.info) {
+              console.info.apply(console, arguments);
+            }
+            return;
+          }
+          return origError.apply(console, arguments);
+        };
+
+        window.addEventListener(
+          'error',
+          function (e) {
+            if (
+              e &&
+              typeof e.message === 'string' &&
+              (e.message.indexOf('TensorFlow Lite') !== -1 ||
+               e.message.indexOf('XNNPACK') !== -1 ||
+               e.message.indexOf('INFO:') === 0)
+            ) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+            }
+          },
+          true
+        );
+
+        window.addEventListener(
+          'unhandledrejection',
+          function (e) {
+            if (
+              e &&
+              e.reason &&
+              typeof e.reason.message === 'string' &&
+              (e.reason.message.indexOf('TensorFlow Lite') !== -1 ||
+               e.reason.message.indexOf('XNNPACK') !== -1 ||
+               e.reason.message.indexOf('INFO:') === 0)
+            ) {
+              e.preventDefault();
+            }
+          },
+          true
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

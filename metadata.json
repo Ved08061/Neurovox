@@ -1,0 +1,6 @@
+{
+  "name": "NeuroVox AI Custom Mask Design",
+  "description": "Parametric AI custom mask design and 6-point facial analysis platform for personalized NeuroVox bio-acoustic and silent-speech wearables.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
